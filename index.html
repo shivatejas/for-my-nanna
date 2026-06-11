@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Nanna ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden;
+background:
+linear-gradient(180deg,#070b34,#121c84,#000);
+color:white;
+min-height:100vh;
+}
+
+/* ---------- ANIMATIONS ---------- */
+.fade-in{
+animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes twinkle{
+0%,100%{opacity:.3;}
+50%{opacity:1;}
+}
+
+@keyframes floatHeart{
+0%{
+transform:translateY(0);
+opacity:.3;
+}
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+}
+
+/* ---------- BACKGROUND ---------- */
+.sky{
+position:fixed;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-2;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite;
+}
+
+.heart{
+position:absolute;
+color:#ff8fb1;
+opacity:.2;
+font-size:18px;
+animation:floatHeart 10s linear infinite;
+}
+
+/* ---------- SCREEN ---------- */
+.screen{
+display:none;
+min-height:100vh;
+width:100%;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+animation:fadeIn .7s ease;
+}
+
+h1{
+font-size:3rem;
+text-shadow:
+0 0 15px rgba(255,255,255,.7),
+0 0 30px #c084fc;
+}
+
+.subtitle{
+margin-top:10px;
+font-size:18px;
+opacity:.8;
+}
+
+button{
+margin-top:20px;
+padding:16px 34px;
+border:none;
+border-radius:60px;
+font-size:18px;
+cursor:pointer;
+color:white;
+background:
+linear-gradient(135deg,#8b5cf6,#ec4899);
+transition:.35s;
+box-shadow:
+0 0 20px rgba(192,132,252,.3);
+}
+
+button:hover{
+transform:translateY(-3px) scale(1.04);
+box-shadow:
+0 0 30px rgba(236,72,153,.5);
+}
+
+.hidden{
+display:none;
+}
+
+/* ---------- PASSWORD ---------- */
+.glass-card{
+width:340px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(14px);
+padding:35px;
+border-radius:28px;
+border:
+1px solid rgba(255,255,255,.12);
+box-shadow:
+0 10px 40px rgba(0,0,0,.3);
+}
+
+input{
+width:100%;
+padding:15px;
+margin-top:18px;
+border:none;
+outline:none;
+border-radius:14px;
+font-size:18px;
+text-align:center;
+}
+
+/* ---------- FIREWORK SCREEN ---------- */
+#fireworksScreen{
+background:
+linear-gradient(180deg,#000814,#001d3d);
+overflow:hidden;
+position:relative;
+}
+
+.rocket{
+position:absolute;
+bottom:-50px;
+width:4px;
+height:120px;
+border-radius:10px;
+background:
+linear-gradient(
+to top,
+transparent,
+#fff,
+#ffd166
+);
+animation:shootUp 2s linear forwards;
+}
+
+@keyframes shootUp{
+0%{
+transform:
+translateY(0);
+opacity:1;
+}
+100%{
+transform:
+translateY(-95vh);
+opacity:1;
+}
+}
+
+.explosion{
+position:absolute;
+width:8px;
+height:8px;
+border-radius:50%;
+animation:burst 1.5s ease forwards;
+}
+
+@keyframes burst{
+0%{
+transform:
+translate(0,0)
+scale(1);
+opacity:1;
+}
+100%{
+transform:
+translate(var(--x),var(--y))
+scale(0);
+opacity:0;
+}
+}
+
+.big-glow{
+font-size:3rem;
+z-index:10;
+text-shadow:
+0 0 20px white,
+0 0 40px #c084fc,
+0 0 60px #ec4899;
+}
+
+/* ---------- CAKE ---------- */
+.cake-wrapper{
+margin:30px 0;
+position:relative;
+}
+
+.cake{
+width:240px;
+height:150px;
+position:relative;
+transition:.8s;
+}
+
+.layer1{
+position:absolute;
+bottom:0;
+width:100%;
+height:70px;
+background:
+linear-gradient(
+135deg,
+#fff,
+#d8b4fe
+);
+border-radius:20px;
+}
+
+.layer2{
+position:absolute;
+bottom:60px;
+left:15px;
+width:210px;
+height:60px;
+background:
+linear-gradient(
+135deg,
+#f5f3ff,
+#c084fc
+);
+border-radius:20px;
+}
+
+.icing{
+position:absolute;
+top:25px;
+left:15px;
+width:210px;
+height:25px;
+background:white;
+border-radius:20px;
+}
+
+.candles{
+position:absolute;
+top:-15px;
+width:100%;
+display:flex;
+justify-content:space-evenly;
+}
+
+.candle{
+width:14px;
+height:55px;
+background:white;
+border-radius:5px;
+position:relative;
+}
+
+.flame{
+position:absolute;
+top:-18px;
+left:50%;
+transform:translateX(-50%);
+width:16px;
+height:22px;
+background:gold;
+border-radius:50%;
+box-shadow:
+0 0 20px gold,
+0 0 35px orange;
+animation:flicker .4s infinite;
+}
+
+@keyframes flicker{
+50%{
+transform:
+translateX(-50%)
+scale(1.15);
+}
+}
+
+.cut-line{
+position:absolute;
+height:150px;
+width:4px;
+background:#fff;
+left:50%;
+top:0;
+opacity:0;
+transition:.6s;
+}
+
+.cake.cut .cut-line{
+opacity:1;
+}
+
+/* ---------- FINAL TEXT ---------- */
+.final-text{
+font-size:4rem;
+margin-top:25px;
+text-shadow:
+0 0 15px #fff,
+0 0 35px #c084fc,
+0 0 60px #ec4899;
+animation:floatText 2s infinite ease-in-out;
+}
+
+@keyframes floatText{
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* ---------- ENVELOPES ---------- */
+.envelope-grid{
+width:100%;
+max-width:1200px;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:24px;
+margin-top:40px;
+}
+
+.envelope{
+position:relative;
+height:500px;
+cursor:pointer;
+perspective:1000px;
+overflow:hidden;
+}
+.envelope-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform .8s;
+transform-style:preserve-3d;
+}
+
+.envelope.open .envelope-inner{
+transform:rotateY(180deg);
+}
+
+.env-front,
+.env-back{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+border-radius:25px;
+}
+
+.env-front{
+background:
+linear-gradient(
+135deg,
+#ec4899,
+#8b5cf6
+);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+font-weight:bold;
+box-shadow:
+0 10px 25px rgba(0,0,0,.3);
+}
+
+.env-back{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+transform:rotateY(180deg);
+padding:20px;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+border-radius:25px;
+}
+
+/* ---------- MEMORY CAROUSEL ---------- */
+.carousel{
+position:relative;
+width:100%;
+max-width:260px;
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+overflow:hidden;
+border-radius:20px;
+}
+.memory-container{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+height:auto;
+border-radius:20px;
+}
+.memory-message{
+position:absolute;
+bottom:10px;
+left:0;
+width:100%;
+padding:16px;
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.85),
+transparent
+);
+
+color:white;
+font-size:16px;
+text-align:center;
+
+opacity:0;
+transform:
+translateY(20px);
+
+transition:.4s ease;
+}
+
+.memory-container:hover
+.memory-message{
+
+opacity:1;
+transform:
+translateY(0);
+}
+.carousel img{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+display:block;
+}
+.carousel-buttons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+}
+
+.small-btn{
+padding:8px 14px;
+font-size:15px;
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:768px){
+
+h1{
+font-size:2rem;
+}
+
+.big-glow{
+font-size:2rem;
+}
+
+.final-text{
+font-size:2.4rem;
+}
+
+button{
+width:90%;
+}
+
+.glass-card{
+width:95%;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky" id="sky"></div>
+
+<!-- PASSWORD -->
+<div class="screen active" id="passwordScreen">
+
+<div class="glass-card fade-in">
+<h1>Hey Nanna ❤️</h1>
+
+<p class="subtitle">
+A magical surprise is waiting ✨
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+/>
+
+<button onclick="checkPassword()">
+Unlock Surprise 🔐
+</button>
+</div>
+
+</div>
+
+<!-- SURPRISE -->
+<div class="screen" id="surpriseScreen">
+
+<h1>
+A Surprise Is Waiting For You ❤️
+</h1>
+
+<button
+id="startBtn"
+class="hidden"
+onclick="startFireworks()">
+
+Start ✨
+
+</button>
+
+</div>
+
+<!-- FIREWORKS -->
+<div
+class="screen"
+id="fireworksScreen">
+
+<h1 class="big-glow">
+HAPPY BIRTHDAY
+NANNA!!!!! ❤️
+</h1>
+
+<button
+id="celebrateBtn"
+class="hidden"
+onclick="showCelebration()">
+
+Start Celebration 🎉
+
+</button>
+
+</div>
+
+<!-- CELEBRATION -->
+<div
+class="screen"
+id="celebrationScreen">
+
+<div class="cake-wrapper">
+
+<div
+class="cake"
+id="cake">
+
+<div class="layer1"></div>
+<div class="layer2"></div>
+<div class="icing"></div>
+
+<div class="candles">
+
+<div class="candle">
+<div class=
+"flame hidden">
+</div>
+</div>
+
+<div class="candle">
+<div class=
+"flame hidden">
+</div>
+</div>
+
+<div class="candle">
+<div class=
+"flame hidden">
+</div>
+</div>
+
+</div>
+
+<div class="cut-line"></div>
+
+</div>
+
+</div>
+
+<button
+id="mainCelebrationBtn"
+onclick=
+"nextStep()">
+
+Light Candles
+
+</button>
+
+<h1
+id="finalWish"
+class=
+"final-text hidden">
+
+HAPPY BIRTHDAY
+NANNA ❤️
+
+</h1>
+
+<button
+id="moreBtn"
+class="hidden"
+onclick=
+"showSurprises()">
+
+Let's See More 💌
+
+</button>
+
+</div>
+
+<!-- SURPRISES SCREEN -->
+<div class="screen" id="moreScreen">
+
+<h1>More Surprises For You ❤️</h1>
+
+<div class="envelope-grid">
+
+<!-- WISHES -->
+<div class="envelope"
+onclick="toggleEnvelope(this)">
+
+<div class="envelope-inner">
+
+<div class="env-front">
+💌 Wishes
+</div>
+
+<div class="env-back">
+
+<h2>For You ❤️</h2>
+
+<p style="line-height:1.8;
+margin-top:12px;">
+
+Happy Birthday Nanna ❤️
+
+You are one of the most
+beautiful parts of life.
+I hope your smile never
+fades and all your dreams
+come true.
+
+May this year bring you
+love, happiness,
+peace and endless smiles.
+
+Thank you for being YOU ✨
+
+</p>
+
+</div>
+</div>
+</div>
+
+<!-- MEMORIES -->
+<div class="envelope"
+onclick="toggleEnvelope(this)">
+
+<div class="envelope-inner">
+
+<div class="env-front">
+📸 Best of You!!!
+</div>
+
+<div class="env-back">
+
+<div class="carousel">
+
+<div class="memory-container">
+
+<img
+id="memoryImage"
+src="1.jpg"
+/>
+
+<div id="memoryMessage"
+class="memory-message">
+
+You make every memory beautiful ❤️
+
+</div>
+
+</div>
+<div class=
+"carousel-buttons">
+
+<button
+class="small-btn"
+onclick=
+"prevImage(event)">
+
+⬅
+
+</button>
+
+<button
+class="small-btn"
+onclick=
+"nextImage(event)">
+
+➡
+
+</button>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- FAVORITE MOMENTS -->
+<div class="envelope"
+onclick="toggleEnvelope(this)">
+
+<div class="envelope-inner">
+
+<div class="env-front">
+❤️ Fav Moments
+</div>
+
+<div class="env-back">
+
+<p style=
+"line-height:2">
+
+❤️ First conversation<br>
+❤️ First fight<br>
+❤️ Late night talks<br>
+❤️ Random laughs<br>
+❤️ Every moment together
+
+</p>
+
+</div>
+</div>
+</div>
+
+<!-- THINGS I LIKE -->
+<div class="envelope"
+onclick="toggleEnvelope(this)">
+
+<div class="envelope-inner">
+
+<div class="env-front">
+🌸 Things I Like
+</div>
+
+<div class="env-back">
+
+<p style=
+"line-height:2">
+
+❤️ Your smile<br>
+❤️ Your care<br>
+❤️ Your cute nature<br>
+❤️ The way you make
+everything better<br>
+❤️ Everything about YOU
+
+</p>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+let currentImage = 1;
+let celebrationStep = 0;
+
+function showScreen(id){
+
+document
+.querySelectorAll('.screen')
+.forEach(s=>{
+
+s.classList
+.remove('active');
+
+});
+
+document
+.getElementById(id)
+.classList
+.add('active');
+}
+
+/* PASSWORD */
+function checkPassword(){
+
+const pass =
+document
+.getElementById(
+'password'
+).value;
+
+if(pass === "1206"){
+
+showScreen(
+'surpriseScreen'
+);
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'startBtn'
+)
+.classList
+.remove('hidden');
+
+},2000);
+
+}else{
+
+alert(
+"Wrong Password ❤️"
+);
+
+}
+}
+
+/* FIREWORKS */
+function startFireworks(){
+
+showScreen(
+'fireworksScreen'
+);
+
+startCrackers();
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'celebrateBtn'
+)
+.classList
+.remove('hidden');
+
+},2500);
+}
+
+function startCrackers(){
+
+setInterval(()=>{
+
+launchRocket();
+
+},700);
+}
+
+function launchRocket(){
+
+const screen =
+document
+.getElementById(
+'fireworksScreen'
+);
+
+const rocket =
+document
+.createElement('div');
+
+rocket.className =
+'rocket';
+
+rocket.style.left =
+Math.random()*100
++ '%';
+
+screen.appendChild(
+rocket
+);
+
+setTimeout(()=>{
+
+explode(
+rocket.offsetLeft,
+window.innerHeight
+*0.25
+);
+
+rocket.remove();
+
+},1800);
+}
+
+function explode(x,y){
+
+for(let i=0;i<40;i++){
+
+const particle =
+document
+.createElement('div');
+
+particle.className =
+'explosion';
+
+particle.style.left =
+x + 'px';
+
+particle.style.top =
+y + 'px';
+
+particle.style.background =
+`hsl(
+${Math.random()*360},
+100%,70%
+)`;
+
+particle.style.setProperty(
+'--x',
+(Math.random()-0.5)
+*250 + 'px'
+);
+
+particle.style.setProperty(
+'--y',
+(Math.random()-0.5)
+*250 + 'px'
+);
+
+document
+.getElementById(
+'fireworksScreen'
+)
+.appendChild(
+particle
+);
+
+setTimeout(()=>{
+particle.remove();
+},1500);
+
+}
+}
+
+/* CELEBRATION */
+function showCelebration(){
+
+showScreen(
+'celebrationScreen'
+);
+}
+
+function nextStep(){
+
+const btn =
+document
+.getElementById(
+'mainCelebrationBtn'
+);
+
+const flames =
+document
+.querySelectorAll(
+'.flame'
+);
+
+const cake =
+document
+.getElementById(
+'cake'
+);
+
+celebrationStep++;
+
+if(
+celebrationStep===1
+){
+
+flames.forEach(f=>{
+
+f.classList
+.remove('hidden');
+
+});
+
+btn.innerText =
+"Make A Wish ✨";
+}
+
+else if(
+celebrationStep===2
+){
+
+alert(
+"Make A Beautiful Wish ❤️"
+);
+
+btn.innerText =
+"Blow Candles 💨";
+}
+
+else if(
+celebrationStep===3
+){
+
+flames.forEach(f=>{
+
+f.classList
+.add('hidden');
+
+});
+
+btn.innerText =
+"Cut The Cake 🎂";
+}
+
+else if(
+celebrationStep===4
+){
+
+cake.classList
+.add('cut');
+
+btn.style.display =
+'none';
+
+document
+.getElementById(
+'finalWish'
+)
+.classList
+.remove('hidden');
+
+setTimeout(()=>{
+
+document
+.getElementById(
+'moreBtn'
+)
+.classList
+.remove('hidden');
+
+},2000);
+}
+}
+
+/* SURPRISES */
+function showSurprises(){
+
+showScreen(
+'moreScreen'
+);
+}
+
+function toggleEnvelope(el){
+
+el.classList
+.toggle('open');
+}
+
+/* MEMORY CAROUSEL */
+const memoryMessages = {
+
+1:"The beginning of beautiful memories ❤️",
+
+2:"You looked so cute here 🥹",
+
+3:"One of my favorite photos ✨",
+
+4:"Still can't stop smiling at this ❤️",
+
+5:"Every picture of you feels special 🌸",
+
+6:"I wish I could relive this moment 🫶",
+
+7:"You looked extra pretty here 💜",
+
+8:"One photo, thousand emotions ❤️",
+
+9:"Forever one of my favorite images ✨",
+
+10:"And many more to come ❤️",
+
+11:"Elegance ❤️",
+
+12:"Even moon feels jealous of your beauty ❤️",
+
+13:"Cutie ❤️"
+
+
+};
+
+function updateMemory(){
+
+document
+.getElementById(
+'memoryImage'
+).src =
+currentImage +
+".jpg";
+
+document
+.getElementById(
+'memoryMessage'
+).innerText =
+memoryMessages[
+currentImage
+];
+}
+
+function nextImage(e){
+
+e.stopPropagation();
+
+currentImage++;
+
+if(currentImage>13){
+currentImage=1;
+}
+
+updateMemory();
+}
+
+function prevImage(e){
+
+e.stopPropagation();
+
+currentImage--;
+
+if(currentImage<1){
+currentImage=13;
+}
+
+updateMemory();
+}
+/* STARS */
+const sky =
+document
+.getElementById(
+'sky'
+);
+
+for(let i=0;i<120;i++){
+
+const star =
+document
+.createElement('div');
+
+star.className =
+'star';
+
+star.style.width =
+Math.random()*3
++ 'px';
+
+star.style.height =
+star.style.width;
+
+star.style.left =
+Math.random()*100
++ '%';
+
+star.style.top =
+Math.random()*100
++ '%';
+
+star.style.animationDelay =
+Math.random()*4
++ 's';
+
+sky.appendChild(
+star
+);
+}
+
+/* HEARTS */
+for(let i=0;i<20;i++){
+
+const heart =
+document
+.createElement('div');
+
+heart.className =
+'heart';
+
+heart.innerHTML =
+'❤️';
+
+heart.style.left =
+Math.random()*100
++ '%';
+
+heart.style.bottom =
+'-50px';
+
+heart.style.animationDuration =
+(Math.random()*5+8)
++ 's';
+
+heart.style.animationDelay =
+Math.random()*8
++ 's';
+
+sky.appendChild(
+heart
+);
+}
+
+/* ENTER KEY */
+document
+.getElementById(
+'password'
+)
+.addEventListener(
+'keypress',
+function(e){
+
+if(
+e.key==='Enter'
+){
+checkPassword();
+}
+
+});
+
+</script>
+
+</body>
+</html>
