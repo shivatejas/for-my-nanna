@@ -444,26 +444,38 @@ border-radius:20px;
 }
 .memory-message{
 position:absolute;
-bottom:10px;
+bottom:0;
 left:0;
 width:100%;
-padding:16px;
+padding:14px;
 background:
 linear-gradient(
 to top,
-rgba(0,0,0,.85),
+rgba(0,0,0,.9),
 transparent
 );
 
 color:white;
-font-size:16px;
+font-size:14px;
 text-align:center;
 
 opacity:0;
 transform:
-translateY(20px);
+translateY(15px);
 
-transition:.4s ease;
+transition:.35s ease;
+pointer-events:none;
+}
+
+.memory-container:hover
+.memory-message,
+
+.memory-container.show-message
+.memory-message{
+
+opacity:1;
+transform:
+translateY(0);
 }
 
 .memory-container:hover
@@ -717,7 +729,9 @@ onclick="toggleEnvelope(this)">
 
 <div class="carousel">
 
-<div class="memory-container">
+<div
+class="memory-container"
+onclick="toggleMemoryMessage(event)">
 
 <img
 id="memoryImage"
@@ -1098,6 +1112,18 @@ function showSurprises(){
 
 showScreen(
 'moreScreen'
+);
+}
+
+function toggleMemoryMessage(event){
+
+event.stopPropagation();
+
+const container =
+event.currentTarget;
+
+container.classList.toggle(
+'show-message'
 );
 }
 
